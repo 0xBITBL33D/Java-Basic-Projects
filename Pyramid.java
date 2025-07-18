@@ -26,6 +26,8 @@ class Pyramid{
 
         System.out.println("");
       }
+
+    System.out.println("Enter a new string: ");
     }
   }
 }
