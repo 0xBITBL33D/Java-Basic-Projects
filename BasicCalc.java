@@ -1,22 +1,3 @@
-/*
- *     // 1. Say Hello
-        // 2. Ask for first number
-        // 3. Ask for second number
-
-        // 4. Call methods for add/subtract/multiply/divide
-        // 5. Print the results
-
-        scanner.close();
-    }
-
-    // 6. Make static methods:
-    //    add(int a, int b)
-    //    subtract(int a, int b)
-    //    multiply(int a, int b)
-    //    divide(int a, int b)
-}
- */
-
 import java.util.Scanner;
 
 
@@ -24,44 +5,41 @@ import java.util.Scanner;
 public class BasicCalc {
     
     static int add(int num1, int num2) {
-        int answer = num1 + num2;
-        return answer;
+        return num1 + num2;
     }
 
     static int subtract(int num1, int num2) {
-        int answer = num1 - num2;
-        return answer;
+        return num1 - num2;
     }
 
     static int multiply(int num1, int num2) {
-        int answer = num1 * num2;
-        return answer;
+        return num1 * num2;
     }
 
     static float divide(int num1, int num2) {
-        float answer = num1 / num2;
-        if(num1 == 0 || num2 == 0) {
+        if(num2 == 0) {
             System.err.println("Division by Zero is not allowed");
-            return 0;
+            return -1;
         }
+        float answer = (float)num1 /(float) num2;
         return answer;
     }
 
     static void calcLoop(Scanner sc){
         
         while(true) {
-            System.out.print("Hello, Welcome to the Basic Calc");
+            System.out.print("Hello, Welcome to the Basic Calc\n");
 
             int num1 = Integer.MAX_VALUE;
             int num2 = Integer.MAX_VALUE;
 
             try{
-                System.out.println("Enter first number: ");
+                System.out.print("Enter first number: ");
                 if(sc.hasNextInt()) {
                     num1 = sc.nextInt();
                 }
 
-                System.out.println("Enter second number: ");
+                System.out.print("Enter second number: ");
                 if(sc.hasNextInt()) {
                     num2 = sc.nextInt();
                 } 
@@ -71,10 +49,18 @@ public class BasicCalc {
                 continue;
             }
 
-            System.out.printf("%d + %d = %d", num1, num2, add(num1, num2));
-            System.out.printf("%d - %d = %d", num1, num2, subtract(num1, num2));
-            System.out.printf("%d * %d = %d", num1, num2, multiply(num1, num2));
-            System.out.printf("%d / %d = %d", num1, num2, divide(num1, num2));
+            System.out.printf("%d + %d = %d\n", num1, num2, add(num1, num2));
+            System.out.printf("%d - %d = %d\n", num1, num2, subtract(num1, num2));
+            System.out.printf("%d * %d = %d\n", num1, num2, multiply(num1, num2));
+            System.out.printf("%d / %d = %.2f\n", num1, num2, divide(num1, num2));
+
+            System.out.print("Continue [Y/N]? ");
+            sc.nextLine();
+            String choice = sc.nextLine();
+            if(!choice.equalsIgnoreCase("Y"))
+                break;
+            else
+                continue;
             
             
 
@@ -83,6 +69,8 @@ public class BasicCalc {
     public static void main(String[] args) {
 
     Scanner sc = new Scanner(System.in);
+
+    calcLoop(sc);
 
     }
 }
